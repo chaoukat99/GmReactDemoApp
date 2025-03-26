@@ -1,6 +1,19 @@
 import React from 'react'
+import { useNavigate,Link } from 'react-router-dom';
 
 function StudentMenu() {
+    const navigate=useNavigate();
+
+   function LogOut(){
+    localStorage.setItem("is_connected",false);
+ 
+    setTimeout(()=>{
+       navigate('/student-login');
+    },2000)
+
+   }
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
     <div className="container-fluid">
@@ -21,9 +34,9 @@ function StudentMenu() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link " aria-current="page" href="#">
+            <Link className="nav-link " aria-current="page" to="/student-area">
               Acceuil
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link " aria-current="page" href="#">
@@ -36,14 +49,21 @@ function StudentMenu() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link " aria-current="page" href="#">
-              Profile
-            </a>
+            <Link className="nav-link " aria-current="page" to="/universities">
+              Univesités
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">
+            <Link className="nav-link " aria-current="page" to="/student-profil">
+              Profil
+            </Link>
+          </li>
+          <li className="nav-item">
+            <span className="nav-link" style={{cursor:"pointer"}} aria-current="page"
+            onClick={LogOut}
+            >
               Deconnexion
-            </a>
+            </span>
           </li>
         
           
